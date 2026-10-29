@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "b27df4a07bf24fc58d4d2ea2d7ef2f38",
   "position": {
-    "x": 90,
-    "y": 250,
+    "x": 892.33275802554374,
+    "y": 257.67897825336559,
     "z": 2,
-    "height": 460,
-    "width": 820,
+    "height": 648.96927856403181,
+    "width": 906.6482568173974,
     "tabOrder": 2
   },
   "visual": {
@@ -17,18 +17,107 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Orders"
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Order Date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
                     }
                   },
-                  "Property": "Order Date"
+                  "Level": "Year"
                 }
               },
-              "queryRef": "Orders.Order Date",
-              "nativeQueryRef": "Order Date",
+              "queryRef": "Orders.Order Date.Variation.Date Hierarchy.Year",
+              "nativeQueryRef": "Order Date Year",
               "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Order Date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Quarter"
+                }
+              },
+              "queryRef": "Orders.Order Date.Variation.Date Hierarchy.Quarter",
+              "nativeQueryRef": "Order Date Quarter",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Order Date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Orders.Order Date.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "Order Date Month",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Order Date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Day"
+                }
+              },
+              "queryRef": "Orders.Order Date.Variation.Date Hierarchy.Day",
+              "nativeQueryRef": "Order Date Day",
+              "active": false
             }
           ]
         },
@@ -50,24 +139,6 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Orders"
-                  }
-                },
-                "Property": "Order Date"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "drillFilterOtherVisuals": true
