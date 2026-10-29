@@ -1,0 +1,14 @@
+relationship 6edf6ffe-1a7f-4d02-9ee1-77815371b9b0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'Order Date'
+	toColumn: LocalDateTable_753110cc-7d4f-4bd9-b4e4-6520c5a2bec2.Date
+
+relationship 9b9839a1-b2a2-4e3c-80b2-e140d5869628
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'Ship Date'
+	toColumn: LocalDateTable_20d24a7f-44d4-415a-83a3-f21239eb12d7.Date
+
+relationship AutoDetected_a734e4d9-c9fd-437c-adf2-56dc46409cdc
+	fromColumn: Orders.Region
+	toColumn: People.Region
+

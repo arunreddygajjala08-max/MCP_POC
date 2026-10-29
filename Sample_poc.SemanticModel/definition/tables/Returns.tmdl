@@ -1,0 +1,35 @@
+table Returns
+	lineageTag: 34242645-9f68-4050-b2bf-3a62d6bd05bf
+
+	column Returned
+		dataType: string
+		lineageTag: 58267abb-9d66-4db0-9954-7b6442b787dd
+		summarizeBy: none
+		sourceColumn: Returned
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: e9fbb4d3-3963-480c-886a-0936011e4491
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Returns = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Admin\Downloads\sample_-_superstore.xls"), null, true),
+				    Returns1 = Source{[Name="Returns"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Returns1,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Returned", type text}, {"Order ID", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
