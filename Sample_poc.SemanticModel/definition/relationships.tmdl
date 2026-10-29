@@ -12,3 +12,7 @@ relationship AutoDetected_a734e4d9-c9fd-437c-adf2-56dc46409cdc
 	fromColumn: Orders.Region
 	toColumn: People.Region
 
+relationship 7d9ebd2c-0734-4f56-9f31-6d8a2b84ff9e
+	fromColumn: Orders.'Order ID'
+	toColumn: Returns.'Order ID'
+
