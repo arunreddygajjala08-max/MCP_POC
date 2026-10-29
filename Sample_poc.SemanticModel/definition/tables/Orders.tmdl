@@ -10,25 +10,29 @@ table Orders
 		formatString: 0
 		lineageTag: 7585e140-3f92-428b-8718-2abab5b8529d
 
-	measure 'Customer Count' =
-		DISTINCTCOUNT(Orders[Customer ID])
+	measure 'Customer Count' = DISTINCTCOUNT(Orders[Customer ID])
 		formatString: 0
+		lineageTag: b46d7d6d-3f9b-4520-95a0-3f8e8f671e3f
 
-	measure 'Churned Customers' =
-		VAR MaxOrderDate = MAX(Orders[Order Date])
-		RETURN
-		    CALCULATE(
-		        DISTINCTCOUNT(Orders[Customer ID]),
-		        FILTER(
-		            VALUES(Orders[Customer ID]),
-		            CALCULATE(MAX(Orders[Order Date])) < MaxOrderDate - 90
-		        )
-		    )
+	measure 'Churned Customers' = ```
+			VAR MaxOrderDate = MAX(Orders[Order Date])
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(Orders[Customer ID]),
+			        FILTER(
+			            VALUES(Orders[Customer ID]),
+			            CALCULATE(MAX(Orders[Order Date])) < MaxOrderDate - 90
+			        )
+			    )
+			
+			```
 		formatString: 0
+		lineageTag: 488a333c-c1ba-4768-84e1-77ef48889629
 
-	measure 'Churn Rate %' =
-		DIVIDE([Churned Customers], [Customer Count])
-		formatString: 0.00%;
+	measure 'Churn Rate %' = DIVIDE([Churned Customers], [Customer Count])
+		lineageTag: f2d67dde-90e9-4592-a91c-f4e99ec26760
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Row ID'
 		dataType: int64
@@ -241,9 +245,10 @@ table Orders
 				    Orders1 = Source{[Name="Orders"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(Orders1, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Row ID", Int64.Type}, {"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"Country", type text}, {"City", type text}, {"State", type text}, {"Postal Code", Int64.Type}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Discount", type number}, {"Profit", type number}, {"Column1", type number}}),
-				    #"Replace Region Blank" = Table.ReplaceValue(#"Changed Type", "", "Unspecified", Replacer.ReplaceValue, {"Region"})
+				    #"Replace Region Blank" = Table.ReplaceValue(#"Changed Type",null, "Unspecified", Replacer.ReplaceValue, {"Region"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Replace Region Blank", each true)
 				in
-				    #"Replace Region Blank"
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 
