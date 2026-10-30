@@ -1,0 +1,74 @@
+[
+  {
+    "customer_id": "C001",
+    "customer_name": "Aarav Sharma",
+    "email": "aarav@example.com",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "signup_date": "2025-01-12",
+    "segment": "Regular"
+  },
+  {
+    "customer_id": "C002",
+    "customer_name": "Diya Reddy",
+    "email": "diya@example.com",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "signup_date": "2025-02-03",
+    "segment": "Premium"
+  },
+  {
+    "customer_id": "C003",
+    "customer_name": "Ishaan Patel",
+    "email": "ishaan@example.com",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "signup_date": "2025-03-18",
+    "segment": "Regular"
+  },
+  {
+    "customer_id": "C004",
+    "customer_name": "Ananya Kumar",
+    "email": "ananya@example.com",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "signup_date": "2025-04-22",
+    "segment": "Premium"
+  },
+  {
+    "customer_id": "C005",
+    "customer_name": "Kabir Singh",
+    "email": "kabir@example.com",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "signup_date": "2025-05-09",
+    "segment": "Regular"
+  },
+  {
+    "customer_id": "C006",
+    "customer_name": "Meera Nair",
+    "email": "meera@example.com",
+    "city": "Kochi",
+    "state": "Kerala",
+    "signup_date": "2025-06-15",
+    "segment": "Regular"
+  },
+  {
+    "customer_id": "C007",
+    "customer_name": "Vivaan Gupta",
+    "email": "vivaan@example.com",
+    "city": "Delhi",
+    "state": "Delhi",
+    "signup_date": "2025-07-01",
+    "segment": "Premium"
+  },
+  {
+    "customer_id": "C008",
+    "customer_name": "Saanvi Das",
+    "email": "saanvi@example.com",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "signup_date": "2025-08-11",
+    "segment": "Regular"
+  }
+]
